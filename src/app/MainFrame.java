@@ -27,13 +27,14 @@ public class MainFrame extends Stage{
 		//List
 		HBox centerLayout = new HBox(15);
 		
-		AccountView accView = new AccountView(accController,btnAction);
+		AccountView accView = new AccountView(accController);
 		
 		ListView<Account> accListView = new ListView<Account>();
 		accListView.setItems(accList);
 		accListView.setMinWidth(300);
-		accListView.getSelectionModel().selectedItemProperty().addListener((obs,oldVal,newVal) -> {
-			accView.setForEdit();
+		//TODO: Implement this to happen when user click on already selected item
+		accListView.getSelectionModel().selectedItemProperty().addListener((obs,oldVal,newVal) -> { 
+			accView.setForEdit((Account)newVal);
 			accView.update((Account)newVal);
 		});
 		
@@ -48,13 +49,7 @@ public class MainFrame extends Stage{
 		
 		btnAction.setText("Add");
 		btnAction.setOnAction(e -> {
-			if(btnAction.getText().equals("Add")){
-				btnAction.setText("Edit");
-				accView.setForAdd();
-			}else{
-				btnAction.setText("Add");
-				accView.setForEdit();
-			}
+			accView.setForAdd();
 		});
 		
 		Button btnRemove = new Button("Remove");

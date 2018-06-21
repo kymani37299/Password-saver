@@ -96,6 +96,9 @@ public class AccountController {
 	
 	private void updateAccounts() {
 		viewList.clear();
+		if(code==null || code.equals("")){
+			return;
+		}
 		for(Account account : this.accounts) {
 			Account acc = decryptAccount(code, account);
 			if(acc!=null) {
