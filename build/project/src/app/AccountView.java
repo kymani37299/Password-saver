@@ -13,7 +13,7 @@ public class AccountView extends GridPane{
 	
 	private TextField tfServer;
 	private TextField tfUsername;
-	private PasswordField tfPassword;
+	private TextField tfPassword;
 	private TextField tfEmail;
 	private TextArea tfOther;
 	
